@@ -779,6 +779,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         go = { 'goimports', 'gofmt' },
         -- Conform can also run multiple formatters sequentially
+        -- python = { 'ruff', 'ruff_format', 'ruff_organize_import' }
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
@@ -837,6 +838,7 @@ require('lazy').setup({
           end,
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
+        preselect = cmp.PreselectMode.None,
 
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
@@ -978,8 +980,8 @@ require('lazy').setup({
         return '%2l:%-2v'
       end
 
-      -- auto add closing brackets & quotes
-      require('mini.pairs').setup()
+      -- auto add closing brackets & quotes (switched to nvim-autopairs)
+      -- require('mini.pairs').setup()
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
@@ -994,6 +996,7 @@ require('lazy').setup({
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'python', 'go' },
       -- Autoinstall languages that are not installed
       auto_install = true,
+      ignore_install = { 'csv' },
       highlight = {
         enable = true,
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
@@ -1023,7 +1026,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
